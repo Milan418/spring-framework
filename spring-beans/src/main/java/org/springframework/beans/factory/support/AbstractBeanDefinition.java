@@ -141,10 +141,22 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 
 	private boolean abstractFlag = false;
 
+	//是否懒加载
 	private boolean lazyInit = false;
 
+	//对应<bean>中autowire属性
+	//取值有default(默认值),byName,byType,constructor,autodetect
+	//byType-根据类型匹配注入依赖关系
+	//byName-通过名字注入依赖关系
+	//constructor-通过构造函数注入依赖关系
 	private int autowireMode = AUTOWIRE_NO;
 
+	//对应<bean>中dependency-check属性,对bean的属性检查
+	//取值有all，objects，simple；
+	//如果不进行设置设就是Spring中dependency-check的默认值，不进行任何检查
+	//simple-只检查简单类型属性以及集合类型属性
+	//objects-检查除简单类型属性以及集合类型属性外的引用类型属性  
+	//all-检查所有类型属性
 	private int dependencyCheck = DEPENDENCY_CHECK_NONE;
 
 	private String[] dependsOn;
